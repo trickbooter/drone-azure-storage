@@ -9,14 +9,11 @@ build:
     - make test
 
 publish:
-  coverage:
-    when:
-      branch: master
   docker:
     username: $$DOCKER_USER
     password: $$DOCKER_PASS
     email: $$DOCKER_EMAIL
-    repo: plugins/drone-azure-storage
+    repo: riteam/drone-azure-storage
     tag: latest
     when:
       branch: master
@@ -24,16 +21,7 @@ publish:
     username: $$DOCKER_USER
     password: $$DOCKER_PASS
     email: $$DOCKER_EMAIL
-    repo: plugins/drone-azure-storage
+    repo: riteam/drone-azure-storage
     tag: develop
     when:
       branch: develop
-
-plugin:
-  name: Azure Storage
-  desc: Publish files and artifacts to Azure Storage
-  type: publish
-  image: plugins/drone-azure-storage
-  labels:
-    - azure
-    - storage
