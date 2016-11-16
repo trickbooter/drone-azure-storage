@@ -17,12 +17,12 @@ RUN apk update && \
   pip install --upgrade \
     pip && \
   pip install \
-    azure-common>=1.0.0 \
-    requests>=2.9.1 \
-    cryptography>=1.2.2 \
-    azure-servicemanagement-legacy>=0.20.1 \
-    azure-storage>=0.20.3 \
-    blobxfer==0.9.9.11 && \
+    azure-common==1.1.4 \
+    azure-storage==0.33.0 \
+    azure-servicemanagement-legacy==0.20.5 \
+    cryptography>=1.5.2 \
+    requests==2.11.1 \
+    blobxfer==0.12.0 && \
   rm -rf /var/cache/apk/*
 
 ADD drone-azure-storage /bin/
