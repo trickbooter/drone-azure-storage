@@ -3,7 +3,7 @@
 Drone plugin to publish files and artifacts to Azure Storage. For the usage information and a listing of the available options please take a look at [the docs](DOCS.md).
 
 ## Binary
-
+ 
 Build the binary using `make`:
 
 ```
