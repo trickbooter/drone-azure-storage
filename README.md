@@ -2,6 +2,8 @@
 
 Drone plugin to publish files and artifacts to Azure Storage. For the usage information and a listing of the available options please take a look at [the docs](DOCS.md).
 
+[![Build Status](http://138.68.151.154/api/badges/Retail_Development/drone-azure-storage/status.svg)](http://138.68.151.154/Retail_Development/drone-azure-storage)
+
 ## Binary
 
 Build the binary using `make`:
