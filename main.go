@@ -61,7 +61,7 @@ func main() {
 func command(s AzureBlobxfer, w plugin.Workspace) *exec.Cmd {
 
 	source := filepath.Join(w.Path, s.Source)
-	segments := Itoa(strings.Count(source, "/"))
+	segments := strconv.Itoa(strings.Count(source, "/"))
 
 	args := []string{
 		"--strip-components",

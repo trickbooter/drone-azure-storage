@@ -16,11 +16,12 @@ func TestCommandBuildCorrectly(t *testing.T) {
 	vargs.StorageAccountName = "my-storage-account"
 	vargs.Source = "__source__"
 	w := plugin.Workspace{Path: "/test/path"}
-	s := filepath.Join(w.Path, vargs.Source)
+	src := filepath.Join(w.Path, vargs.Source)
+	seg := strconv.Itoa(strings.Count(s, "/"))
 	if !reflect.DeepEqual(command(vargs, w).Args, []string{
 		"blobxfer",
 		"--strip-components",
-		Itoa(strings.Count(s, "/")),
+		seg,
 		"my-storage-account",
 		"my-container",
 		s,
