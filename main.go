@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 )
 
@@ -60,7 +61,7 @@ func main() {
 func command(s AzureBlobxfer, w plugin.Workspace) *exec.Cmd {
 
 	source := filepath.Join(w.Path, s.Source)
-	segments := strings.Count(source, "/")
+	segments := Itoa(strings.Count(source, "/"))
 
 	args := []string{
 		"--strip-components",

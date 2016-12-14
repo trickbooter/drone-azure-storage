@@ -4,6 +4,7 @@ import (
 	"github.com/drone/drone-plugin-go/plugin"
 	"path/filepath"
 	"reflect"
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -19,7 +20,7 @@ func TestCommandBuildCorrectly(t *testing.T) {
 	if !reflect.DeepEqual(command(vargs, w).Args, []string{
 		"blobxfer",
 		"--strip-components",
-		strings.Count(s, "/"),
+		Itoa(strings.Count(s, "/")),
 		"my-storage-account",
 		"my-container",
 		s,
