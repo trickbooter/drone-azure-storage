@@ -24,7 +24,7 @@ func TestCommandBuildCorrectly(t *testing.T) {
 		seg,
 		"my-storage-account",
 		"my-container",
-		s,
+		src,
 	}) {
 		t.Error("command not composed correctly")
 	}
