@@ -4,6 +4,8 @@ import (
 	"github.com/drone/drone-plugin-go/plugin"
 	"path/filepath"
 	"reflect"
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -14,11 +16,15 @@ func TestCommandBuildCorrectly(t *testing.T) {
 	vargs.StorageAccountName = "my-storage-account"
 	vargs.Source = "__source__"
 	w := plugin.Workspace{Path: "/test/path"}
+	src := filepath.Join(w.Path, vargs.Source)
+	seg := strconv.Itoa(strings.Count(src, "/"))
 	if !reflect.DeepEqual(command(vargs, w).Args, []string{
 		"blobxfer",
+		"--strip-components",
+		seg,
 		"my-storage-account",
 		"my-container",
-		filepath.Join(w.Path, vargs.Source),
+		src,
 	}) {
 		t.Error("command not composed correctly")
 	}
