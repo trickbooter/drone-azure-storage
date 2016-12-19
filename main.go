@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/drone/drone-plugin-go/plugin"
-	"math"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -74,7 +73,7 @@ func command(s AzureBlobxfer, w plugin.Workspace) *exec.Cmd {
 	return exec.Command("blobxfer", args...)
 }
 
-func stripCount(path string) {
+func stripCount(path string) int {
 	if v := strings.Count(source, "/") - 1; v >= 0 {
 		return v
 	} else {
