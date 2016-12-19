@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/drone/drone-plugin-go/plugin"
+	"math"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -61,7 +62,7 @@ func main() {
 func command(s AzureBlobxfer, w plugin.Workspace) *exec.Cmd {
 
 	source := filepath.Join(w.Path, s.Source)
-	segments := strconv.Itoa(strings.Count(source, "/"))
+	segments := strconv.Itoa(stripCount(source))
 
 	args := []string{
 		"--strip-components",
@@ -71,6 +72,14 @@ func command(s AzureBlobxfer, w plugin.Workspace) *exec.Cmd {
 		source,
 	}
 	return exec.Command("blobxfer", args...)
+}
+
+func stripCount(path string) {
+	if v := strings.Count(source, "/") - 1; v >= 0 {
+		return v
+	} else {
+		0
+	}
 }
 
 // trace writes each command to standard error (preceded by a ‘$ ’) before it
