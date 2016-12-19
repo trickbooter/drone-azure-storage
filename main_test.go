@@ -17,7 +17,7 @@ func TestCommandBuildCorrectly(t *testing.T) {
 	vargs.Source = "__source__"
 	w := plugin.Workspace{Path: "/test/path"}
 	src := filepath.Join(w.Path, vargs.Source)
-	seg := strconv.Itoa(strings.Count(src, "/"))
+	seg := strconv.Itoa(stripCount(src))
 	if !reflect.DeepEqual(command(vargs, w).Args, []string{
 		"blobxfer",
 		"--strip-components",
