@@ -77,7 +77,7 @@ func stripCount(path string) int {
 	if v := strings.Count(source, "/") - 1; v >= 0 {
 		return v
 	} else {
-		0
+		return 0
 	}
 }
 
