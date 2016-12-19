@@ -74,10 +74,13 @@ func command(s AzureBlobxfer, w plugin.Workspace) *exec.Cmd {
 }
 
 func stripCount(path string) int {
-	if v := strings.Count(path, "/") - 1; v >= 0 {
-		return v
+	c := strings.Count(filepath.Clean(path), "/")
+	// if we have a valid path that is a file and has more than 0 leading segments
+	// subtract one segment to account for the file
+	if finfo, err := os.Stat(path); err == nil && !finfo.IsDir() && c > 0 {
+		return c - 1
 	} else {
-		return 0
+		return c
 	}
 }
 
